@@ -61,11 +61,33 @@
 
 
 <!-- LOGO W SPACERZE -->
-<div id="tourLogo">
+<div id="tourLogo" role="button" tabindex="0" aria-label="Pokaż kontakt do pośrednika">
   <img src="branding/logo.png" alt="Logo">
 </div>
 
+<!-- WIZYTÓWKA POŚREDNIKA PO KLIKNIĘCIU LOGO -->
+<div id="agentPopup" aria-hidden="true">
+  <div class="agentPopupCard">
 
+    <button id="agentPopupClose" type="button" aria-label="Zamknij">×</button>
+
+    <p class="agentPopupLabel">Kontakt do pośrednika</p>
+
+    <div class="agentPopupContent">
+      <div class="agentPopupAvatar">
+        <img src="branding/avatar.jpg" alt="Pośrednik">
+      </div>
+
+      <div class="agentPopupInfo">
+        <strong>Anna Janiszewska</strong>
+        <span>Pośrednik nieruchomości</span>
+        <a href="tel:534128789">tel. 534 128 789</a>
+        <a href="mailto:anna.janiszewska@nieruchomosci.pl">anna.janiszewska@nieruchomosci.pl</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 

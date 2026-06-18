@@ -143,6 +143,50 @@
 <script src="index.js"></script>
 
 
+<!-- SKRYPT EKRANU STARTOWEGO -->
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
+
+  if (startButton && splashScreen) {
+    startButton.addEventListener("click", function() {
+      splashScreen.style.opacity = "0";
+
+      setTimeout(function() {
+        splashScreen.style.display = "none";
+      }, 350);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
+<script src="vendor/screenfull.min.js"></script>
+<script src="vendor/bowser.min.js"></script>
+<script src="vendor/marzipano.js"></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+<!-- SKRYPT EKRANU STARTOWEGO -->
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
+
+  if (startButton && splashScreen) {
+    startButton.addEventListener("click", function() {
+      splashScreen.style.opacity = "0";
+
+      setTimeout(function() {
+        splashScreen.style.display = "none";
+      }, 350);
+    });
+  }
+});
+</script>
 
 
 

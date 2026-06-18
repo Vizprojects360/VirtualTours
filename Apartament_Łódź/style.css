@@ -920,15 +920,18 @@ body.view-control-buttons .viewControlButton {
 /* PRZYCISK START */
 
 #startTour {
-  position: relative;
-  z-index: 100000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 34px;
 
   border: none;
 
   background: #fff;
   color: #111;
 
-  padding: 17px 40px;
+  padding: 17px 42px;
   min-width: 250px;
 
   border-radius: 999px;

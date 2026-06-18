@@ -1723,8 +1723,8 @@ body.fullscreen-enabled #titleBar {
 
 #tourLogo {
   position: fixed;
-  top: 22px;
-  left: 22px;
+  top: 32px;
+  left: 32px;
 
   z-index: 23000;
 

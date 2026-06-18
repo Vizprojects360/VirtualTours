@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Spacery 360° — Vizprojects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <h1>Spacery 360° — Vizprojects</h1>
+
+  <ul>
+    <li><a href="brzeziny/">Mieszkanie 38 m² — Brzeziny</a></li>
+    <li><a href="karolew/">Mieszkanie — Karolew</a></li>
+  </ul>
+
+</body>
+</html>

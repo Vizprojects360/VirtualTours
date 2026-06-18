@@ -120,7 +120,27 @@
 <script src="data.js"></script>
 <script src="index.js"></script>
 
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
 
+  if (!startButton || !splashScreen) {
+    return;
+  }
+
+  startButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    splashScreen.style.opacity = "0";
+
+    setTimeout(function() {
+      splashScreen.style.display = "none";
+    }, 350);
+  });
+});
+</script>
 
 
 

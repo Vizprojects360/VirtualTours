@@ -1771,3 +1771,172 @@ body.fullscreen-enabled #titleBar {
     max-height: 44px !important;
   }
 }
+
+/* =========================================================
+   RZUT MIESZKANIA / MINIMAPA
+   ========================================================= */
+
+#floorPlanBox {
+  position: fixed;
+  left: 18px;
+  bottom: 82px;
+
+  width: 260px;
+
+  z-index: 22000;
+
+  padding: 10px;
+
+  border-radius: 22px;
+
+  background: rgba(18,18,18,0.50);
+
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+#floorPlanHeader {
+  padding: 4px 6px 10px 6px;
+
+  color: rgba(255,255,255,0.78);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#floorPlan {
+  position: relative;
+
+  width: 100%;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.08);
+}
+
+#floorPlan img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 15px;
+}
+
+.planPoint {
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.95);
+
+  background: rgba(255,255,255,0.75);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.65);
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.planPoint:hover {
+  width: 22px;
+  height: 22px;
+
+  background: #fff;
+}
+
+.planPoint.current {
+  width: 24px;
+  height: 24px;
+
+  background: #ffffff;
+
+  border: 3px solid #ffffff;
+
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,0.18),
+    0 0 0 12px rgba(255,255,255,0.08),
+    0 10px 28px rgba(0,0,0,0.42);
+}
+
+.planPoint.current::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -9px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.70);
+
+  animation: planPulse 2s ease-out infinite;
+}
+
+@keyframes planPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.75);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  #floorPlanBox {
+    left: 12px;
+    bottom: 82px;
+
+    width: 190px;
+
+    padding: 8px;
+
+    border-radius: 18px;
+  }
+
+  #floorPlanHeader {
+    font-size: 11px;
+    padding-bottom: 8px;
+  }
+
+  .planPoint {
+    width: 15px;
+    height: 15px;
+  }
+
+  .planPoint.current {
+    width: 20px;
+    height: 20px;
+  }
+}

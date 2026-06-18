@@ -296,5 +296,66 @@ window.addEventListener("load", function() {
 });
 </script>
 
+
+
+
+
+
+LOGO PO KLIKNIECIU
+
+
+<script>
+window.addEventListener("load", function() {
+  var logo = document.getElementById("tourLogo");
+  var popup = document.getElementById("agentPopup");
+  var closeButton = document.getElementById("agentPopupClose");
+
+  function openAgentPopup() {
+    popup.classList.add("visible");
+    popup.setAttribute("aria-hidden", "false");
+  }
+
+  function closeAgentPopup() {
+    popup.classList.remove("visible");
+    popup.setAttribute("aria-hidden", "true");
+  }
+
+  if (logo && popup && closeButton) {
+    logo.addEventListener("click", function(event) {
+      event.stopPropagation();
+      openAgentPopup();
+    });
+
+    logo.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openAgentPopup();
+      }
+    });
+
+    closeButton.addEventListener("click", function(event) {
+      event.stopPropagation();
+      closeAgentPopup();
+    });
+
+    popup.addEventListener("click", function(event) {
+      if (event.target === popup) {
+        closeAgentPopup();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeAgentPopup();
+      }
+    });
+  }
+});
+</script>
+
+
+
+
+
 </body>
 </html>

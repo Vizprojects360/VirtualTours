@@ -1717,39 +1717,52 @@ body.fullscreen-enabled #titleBar {
 }
 
 
-/* ===== WIĘKSZE LOGO W LEWYM GÓRNYM ROGU ===== */
+/* =========================================================
+   LOGO W LEWYM GÓRNYM ROGU
+   ========================================================= */
 
 #tourLogo {
-  top: 22px !important;
-  left: 22px !important;
+  position: fixed;
+  top: 22px;
+  left: 22px;
 
-  min-width: 78px !important;
-  height: 78px !important;
+  z-index: 23000;
 
-  padding: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 50% !important;
+  width: 78px;
+  height: 78px;
 
-  background: rgba(18,18,18,0.42) !important;
+  padding: 10px;
 
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  border-radius: 50%;
 
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(18,18,18,0.42);
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border: 1px solid rgba(255,255,255,0.12);
 
   box-shadow:
     0 12px 35px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
+  pointer-events: none;
 }
 
 #tourLogo img {
-  max-width: 58px !important;
-  max-height: 58px !important;
+  display: block;
 
-  width: auto !important;
-  height: auto !important;
+  max-width: 58px;
+  max-height: 58px;
 
-  object-fit: contain !important;
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
 }
 
 
@@ -1757,18 +1770,18 @@ body.fullscreen-enabled #titleBar {
 
 @media (max-width: 760px) {
   #tourLogo {
-    top: 14px !important;
-    left: 12px !important;
+    top: 14px;
+    left: 12px;
 
-    min-width: 58px !important;
-    height: 58px !important;
+    width: 58px;
+    height: 58px;
 
-    padding: 8px !important;
+    padding: 8px;
   }
 
   #tourLogo img {
-    max-width: 44px !important;
-    max-height: 44px !important;
+    max-width: 44px;
+    max-height: 44px;
   }
 }
 
@@ -1955,3 +1968,4 @@ body.fullscreen-enabled #titleBar {
 .planPoint.current::after {
   border-color: rgba(229,57,53,0.75) !important;
 }
+

@@ -1717,39 +1717,53 @@ body.fullscreen-enabled #titleBar {
 }
 
 
-/* ===== WIĘKSZE LOGO W LEWYM GÓRNYM ROGU ===== */
+/* =========================================================
+   LOGO W LEWYM GÓRNYM ROGU
+   ========================================================= */
 
 #tourLogo {
-  top: 22px !important;
-  left: 22px !important;
+  position: fixed;
+  top: 32px;
+  left: 32px;
 
-  min-width: 78px !important;
-  height: 78px !important;
+  z-index: 23000;
 
-  padding: 10px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 50% !important;
+  width: 78px;
+  height: 78px;
 
-  background: rgba(18,18,18,0.42) !important;
+  padding: 10px;
 
-  backdrop-filter: blur(18px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+  border-radius: 50%;
 
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(18,18,18,0.42);
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border: 1px solid rgba(255,255,255,0.12);
 
   box-shadow:
     0 12px 35px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
+pointer-events: auto;
+cursor: pointer;
 }
 
 #tourLogo img {
-  max-width: 58px !important;
-  max-height: 58px !important;
+  display: block;
 
-  width: auto !important;
-  height: auto !important;
+  max-width: 120px;
+  max-height: 120px;
 
-  object-fit: contain !important;
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
 }
 
 
@@ -1757,17 +1771,406 @@ body.fullscreen-enabled #titleBar {
 
 @media (max-width: 760px) {
   #tourLogo {
-    top: 14px !important;
-    left: 12px !important;
+    top: 14px;
+    left: 12px;
 
-    min-width: 58px !important;
-    height: 58px !important;
+    width: 58px;
+    height: 58px;
 
-    padding: 8px !important;
+    padding: 8px;
   }
 
   #tourLogo img {
-    max-width: 44px !important;
-    max-height: 44px !important;
+    max-width: 44px;
+    max-height: 44px;
+  }
+}
+
+/* =========================================================
+   RZUT MIESZKANIA / MINIMAPA
+   ========================================================= */
+
+#floorPlanBox {
+  position: fixed;
+  left: 18px;
+  bottom: 25px;
+
+  width: 180px;
+
+  z-index: 22000;
+
+  padding: 10px;
+
+  border-radius: 22px;
+
+  background: rgba(18,18,18,0.50);
+
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+#floorPlanHeader {
+  padding: 4px 6px 10px 6px;
+
+  color: rgba(255,255,255,0.78);
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+#floorPlan {
+  position: relative;
+
+  width: 100%;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.08);
+}
+
+#floorPlan img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 15px;
+}
+
+.planPoint {
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.95);
+
+  background: rgba(255,255,255,0.75);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.65);
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.planPoint:hover {
+  width: 22px;
+  height: 22px;
+
+  background: #fff;
+}
+
+.planPoint.current {
+  width: 24px;
+  height: 24px;
+
+  background: #ffffff;
+
+  border: 3px solid #ffffff;
+
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,0.18),
+    0 0 0 12px rgba(255,255,255,0.08),
+    0 10px 28px rgba(0,0,0,0.42);
+}
+
+.planPoint.current::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -9px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.70);
+
+  animation: planPulse 2s ease-out infinite;
+}
+
+@keyframes planPulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.75);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  #floorPlanBox {
+    left: 12px;
+    bottom: 82px;
+
+    width: 190px;
+
+    padding: 8px;
+
+    border-radius: 18px;
+  }
+
+  #floorPlanHeader {
+    font-size: 11px;
+    padding-bottom: 8px;
+  }
+
+  .planPoint {
+    width: 15px;
+    height: 15px;
+  }
+
+  .planPoint.current {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* ===== AKTYWNA KROPKA NA RZUCIE — CZERWONA ===== */
+
+.planPoint.current {
+  background: #e53935 !important;
+  border-color: #ffffff !important;
+
+  box-shadow:
+    0 0 0 6px rgba(229,57,53,0.25),
+    0 0 0 12px rgba(229,57,53,0.12),
+    0 10px 28px rgba(0,0,0,0.42) !important;
+}
+
+.planPoint.current::after {
+  border-color: rgba(229,57,53,0.75) !important;
+}
+
+/* =========================================================
+   WIZYTÓWKA POŚREDNIKA PO KLIKNIĘCIU LOGO
+   ========================================================= */
+
+#agentPopup {
+  position: fixed;
+  inset: 0;
+
+  z-index: 24000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+#agentPopup.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.agentPopupCard {
+  position: absolute;
+
+  top: 112px;
+  left: 22px;
+
+  width: 400px;
+  max-width: calc(100vw - 44px);
+
+  padding: 26px;
+
+  border-radius: 26px;
+
+  background: rgba(18,18,18,0.72);
+
+  backdrop-filter: blur(24px) saturate(145%);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 28px 75px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
+  color: #fff;
+}
+
+#agentPopupClose {
+  position: absolute;
+
+  top: 12px;
+  right: 14px;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.78);
+
+  font-size: 22px;
+  line-height: 30px;
+
+  cursor: pointer;
+}
+
+#agentPopupClose:hover {
+  background: rgba(255,255,255,0.20);
+  color: #fff;
+}
+
+.agentPopupLabel {
+  margin: 0 0 20px 0;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+
+  color: rgba(255,255,255,0.55);
+}
+
+.agentPopupContent {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.agentPopupAvatar {
+  width: 88px;
+  height: 88px;
+
+  min-width: 88px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  border: 3px solid rgba(255,255,255,0.20);
+
+  background: rgba(255,255,255,0.08);
+}
+
+.agentPopupAvatar img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.agentPopupInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 0;
+}
+
+.agentPopupInfo strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 700;
+
+  color: #fff;
+}
+
+.agentPopupInfo span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+  line-height: 1.25;
+
+  color: rgba(255,255,255,0.64);
+}
+
+.agentPopupInfo a {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 15px;
+  line-height: 1.3;
+
+  color: rgba(255,255,255,0.86);
+
+  text-decoration: none;
+}
+
+.agentPopupInfo a:hover {
+  color: #fff;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+  .agentPopupCard {
+    top: 88px;
+    left: 12px;
+    right: 12px;
+
+    width: auto;
+
+    padding: 22px;
+
+    border-radius: 22px;
+  }
+
+  .agentPopupContent {
+    gap: 15px;
+  }
+
+  .agentPopupAvatar {
+    width: 72px;
+    height: 72px;
+
+    min-width: 72px;
+  }
+
+  .agentPopupInfo strong {
+    font-size: 21px;
+  }
+
+  .agentPopupInfo span,
+  .agentPopupInfo a {
+    font-size: 14px;
   }
 }

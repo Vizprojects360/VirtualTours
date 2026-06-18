@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <!-- RZUT MIESZKANIA / MINIMAPA -->
+<div id="floorPlanBox">
+  <div id="floorPlanHeader">Rzut mieszkania</div>
+
+  <div id="floorPlan">
+    <img src="branding/plan.png" alt="Rzut mieszkania">
+
+    <button class="planPoint" data-scene="0-przedpokj" style="left: 65%; top: 58%;" title="Przedpokój"></button>
+    <button class="planPoint" data-scene="1-balkon" style="left: 25%; top: 7%;" title="Balkon"></button>
+    <button class="planPoint" data-scene="2-kuchnia" style="left: 73%; top: 25%;" title="Kuchnia"></button>
+    <button class="planPoint" data-scene="3-azienka" style="left: 78%; top: 45%;" title="Łazienka"></button>
+    <button class="planPoint" data-scene="4-salon_1" style="left: 55%; top: 35%;" title="Salon 1"></button>
+    <button class="planPoint" data-scene="5-salon_2" style="left: 30%; top: 30%;" title="Salon 2"></button>
+    <button class="planPoint" data-scene="6-sypialnia" style="left: 70%; top: 80%;" title="Sypialnia"></button>
+  </div>
+</div>
+
+
+  
 <title>Mieszkanie 38 m² - Brzeziny</title>
 <meta charset="utf-8">
 <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
@@ -41,11 +61,33 @@
 
 
 <!-- LOGO W SPACERZE -->
-<div id="tourLogo">
+<div id="tourLogo" role="button" tabindex="0" aria-label="Kontakt">
   <img src="branding/logo.png" alt="Logo">
 </div>
 
+<!-- WIZYTÓWKA POŚREDNIKA PO KLIKNIĘCIU LOGO -->
+<div id="agentPopup" aria-hidden="true">
+  <div class="agentPopupCard">
 
+    <button id="agentPopupClose" type="button" aria-label="Zamknij">×</button>
+
+    <p class="agentPopupLabel">Kontakt</p>
+
+    <div class="agentPopupContent">
+      <div class="agentPopupAvatar">
+        <img src="branding/avatar.jpg" alt="Pośrednik">
+      </div>
+
+      <div class="agentPopupInfo">
+        <strong>Anna Janiszewska</strong>
+        <span>Pośrednik nieruchomości</span>
+        <a href="tel:534128789">tel. 534 128 789</a>
+        <a href="mailto:anna.janiszewska@nieruchomosci.pl">anna.janiszewska@nieruchomosci.pl</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
@@ -161,6 +203,159 @@ window.addEventListener("load", function() {
   }
 });
 </script>
+
+</body>
+</html>
+<script src="vendor/screenfull.min.js"></script>
+<script src="vendor/bowser.min.js"></script>
+<script src="vendor/marzipano.js"></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+<!-- SKRYPT EKRANU STARTOWEGO -->
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
+
+  if (startButton && splashScreen) {
+    startButton.addEventListener("click", function() {
+      splashScreen.style.opacity = "0";
+
+      setTimeout(function() {
+        splashScreen.style.display = "none";
+      }, 350);
+    });
+  }
+});
+</script>
+
+<!-- SKRYPT RZUTU MIESZKANIA -->
+<script>
+window.addEventListener("load", function() {
+
+  function setActivePlanPoint(sceneId) {
+    document.querySelectorAll(".planPoint").forEach(function(point) {
+      point.classList.remove("current");
+    });
+
+    var activePoint = document.querySelector('.planPoint[data-scene="' + sceneId + '"]');
+
+    if (activePoint) {
+      activePoint.classList.add("current");
+    }
+  }
+
+  function getCurrentSceneId() {
+    var currentScene = document.querySelector("#sceneList .scene.current");
+
+    if (currentScene) {
+      return currentScene.getAttribute("data-id");
+    }
+
+    return null;
+  }
+
+  document.querySelectorAll(".planPoint").forEach(function(point) {
+    point.addEventListener("click", function() {
+      var sceneId = point.getAttribute("data-scene");
+      var sceneButton = document.querySelector('#sceneList .scene[data-id="' + sceneId + '"]');
+
+      if (sceneButton) {
+        sceneButton.click();
+        setActivePlanPoint(sceneId);
+      }
+    });
+  });
+
+  var sceneList = document.getElementById("sceneList");
+
+  if (sceneList) {
+    var observer = new MutationObserver(function() {
+      var currentSceneId = getCurrentSceneId();
+
+      if (currentSceneId) {
+        setActivePlanPoint(currentSceneId);
+      }
+    });
+
+    observer.observe(sceneList, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ["class"]
+    });
+  }
+
+  var initialSceneId = getCurrentSceneId();
+
+  if (initialSceneId) {
+    setActivePlanPoint(initialSceneId);
+  }
+
+});
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+window.addEventListener("load", function() {
+  var logo = document.getElementById("tourLogo");
+  var popup = document.getElementById("agentPopup");
+  var closeButton = document.getElementById("agentPopupClose");
+
+  function openAgentPopup() {
+    popup.classList.add("visible");
+    popup.setAttribute("aria-hidden", "false");
+  }
+
+  function closeAgentPopup() {
+    popup.classList.remove("visible");
+    popup.setAttribute("aria-hidden", "true");
+  }
+
+  if (logo && popup && closeButton) {
+    logo.addEventListener("click", function(event) {
+      event.stopPropagation();
+      openAgentPopup();
+    });
+
+    logo.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openAgentPopup();
+      }
+    });
+
+    closeButton.addEventListener("click", function(event) {
+      event.stopPropagation();
+      closeAgentPopup();
+    });
+
+    popup.addEventListener("click", function(event) {
+      if (event.target === popup) {
+        closeAgentPopup();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeAgentPopup();
+      }
+    });
+  }
+});
+</script>
+
+
+
+
 
 </body>
 </html>

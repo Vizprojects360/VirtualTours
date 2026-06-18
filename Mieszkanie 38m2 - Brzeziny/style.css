@@ -1733,8 +1733,8 @@ body.fullscreen-enabled #titleBar {
   align-items: center;
   justify-content: center;
 
-  min-width: 46px;
-  height: 46px;
+  min-width: 150px;
+  height: 150px;
 
   padding: 8px 14px;
 

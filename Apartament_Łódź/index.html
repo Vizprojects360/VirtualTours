@@ -10,6 +10,36 @@
 </head>
 <body class="multiple-scenes ">
 
+<!-- EKRAN STARTOWY -->
+<div id="splashScreen">
+  <div class="splashCard">
+
+    <p class="eyebrow">Wirtualna prezentacja nieruchomości</p>
+
+    <h1>Mieszkanie 38 m² - Brzeziny</h1>
+
+    <div class="agentDetails">
+
+      <div class="agentAvatar">
+        <img src="branding/avatar.png" alt="Pośrednik">
+      </div>
+
+      <div class="agentInfo">
+        <strong>Anna Janiszewska</strong>
+        <span>Pośrednik nieruchomości</span>
+        <span>tel. 534 128 789</span>
+        <span>anna.janiszewska@nieruchomosci.pl</span>
+      </div>
+
+    </div>
+
+    <button id="startTour" type="button">Rozpocznij spacer</button>
+
+  </div>
+</div>
+
+  
+
 <div id="pano"></div>
 
 <div id="sceneList">
@@ -90,6 +120,72 @@
 
 <script src="data.js"></script>
 <script src="index.js"></script>
+
+
+
+
+  <!-- STOPKA VIZPROJECTS -->
+<div id="vizFooter">
+  <a href="https://vizprojects.pl/Wirtualne-spacery-3D.html" target="_blank" rel="noopener noreferrer">
+    Spacery 360° by Vizprojects
+  </a>
+</div>
+
+<script src="vendor/screenfull.min.js"></script>
+<script src="vendor/bowser.min.js"></script>
+<script src="vendor/marzipano.js"></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+<!-- SKRYPT EKRANU STARTOWEGO -->
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
+
+  if (startButton && splashScreen) {
+    startButton.addEventListener("click", function() {
+      splashScreen.style.opacity = "0";
+
+      setTimeout(function() {
+        splashScreen.style.display = "none";
+      }, 350);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
+<script src="vendor/screenfull.min.js"></script>
+<script src="vendor/bowser.min.js"></script>
+<script src="vendor/marzipano.js"></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+<!-- SKRYPT EKRANU STARTOWEGO -->
+<script>
+window.addEventListener("load", function() {
+  var startButton = document.getElementById("startTour");
+  var splashScreen = document.getElementById("splashScreen");
+
+  if (startButton && splashScreen) {
+    startButton.addEventListener("click", function() {
+      splashScreen.style.opacity = "0";
+
+      setTimeout(function() {
+        splashScreen.style.display = "none";
+      }, 350);
+    });
+  }
+});
+</script>
+
+
+
+
 
 </body>
 </html>

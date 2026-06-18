@@ -1779,9 +1779,9 @@ body.fullscreen-enabled #titleBar {
 #floorPlanBox {
   position: fixed;
   left: 18px;
-  bottom: 45px;
+  bottom: 25px;
 
-  width: 260px;
+  width: 180px;
 
   z-index: 22000;
 

@@ -873,7 +873,7 @@ body.view-control-buttons .viewControlButton {
   width: 760px;
   max-width: 92vw;
 
-  padding: 50px;
+  padding: 54px 56px;
 
   background: rgba(15,15,15,0.75);
 
@@ -889,6 +889,10 @@ body.view-control-buttons .viewControlButton {
 
   color: #fff;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .eyebrow {

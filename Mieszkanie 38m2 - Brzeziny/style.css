@@ -1777,7 +1777,7 @@ body.fullscreen-enabled #titleBar {
   }
 
   #tourLogo img {
-    max-width: 95px;
-    max-height: 26px;
+    max-width: 150px;
+    max-height: 150px;
   }
 }

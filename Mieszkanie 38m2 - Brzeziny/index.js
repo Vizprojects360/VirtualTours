@@ -14,69 +14,7 @@
  * limitations under the License.
  */
 'use strict';
-<script>
-window.addEventListener("load", function() {
 
-  function setActivePlanPoint(sceneId) {
-    document.querySelectorAll(".planPoint").forEach(function(point) {
-      point.classList.remove("current");
-    });
-
-    var activePoint = document.querySelector('.planPoint[data-scene="' + sceneId + '"]');
-
-    if (activePoint) {
-      activePoint.classList.add("current");
-    }
-  }
-
-  function getCurrentSceneId() {
-    var currentScene = document.querySelector("#sceneList .scene.current");
-
-    if (currentScene) {
-      return currentScene.getAttribute("data-id");
-    }
-
-    return null;
-  }
-
-  document.querySelectorAll(".planPoint").forEach(function(point) {
-    point.addEventListener("click", function() {
-      var sceneId = point.getAttribute("data-scene");
-      var sceneButton = document.querySelector('#sceneList .scene[data-id="' + sceneId + '"]');
-
-      if (sceneButton) {
-        sceneButton.click();
-        setActivePlanPoint(sceneId);
-      }
-    });
-  });
-
-  var sceneList = document.getElementById("sceneList");
-
-  if (sceneList) {
-    var observer = new MutationObserver(function() {
-      var currentSceneId = getCurrentSceneId();
-
-      if (currentSceneId) {
-        setActivePlanPoint(currentSceneId);
-      }
-    });
-
-    observer.observe(sceneList, {
-      attributes: true,
-      subtree: true,
-      attributeFilter: ["class"]
-    });
-  }
-
-  var initialSceneId = getCurrentSceneId();
-
-  if (initialSceneId) {
-    setActivePlanPoint(initialSceneId);
-  }
-
-});
-</script>
 (function() {
   var Marzipano = window.Marzipano;
   var bowser = window.bowser;

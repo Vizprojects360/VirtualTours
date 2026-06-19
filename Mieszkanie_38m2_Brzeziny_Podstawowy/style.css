@@ -828,3 +828,74 @@ body.view-control-buttons .viewControlButton {
 .viewControlButton-6 {
   margin-left: 105px;
 }
+
+
+/* STOPKA — MNIEJ INWAZYJNA */
+
+#vizFooter {
+  position: fixed !important;
+
+  left: auto !important;
+  right: 14px !important;
+  bottom: 10px !important;
+
+  transform: none !important;
+
+  z-index: 22001 !important;
+}
+
+#vizFooter a {
+  padding: 5px 10px !important;
+
+  background: rgba(18,18,18,0.28) !important;
+
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 999px !important;
+
+  color: rgba(255,255,255,0.36) !important;
+
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+
+  box-shadow: none !important;
+}
+
+#vizFooter a:hover {
+  color: rgba(255,255,255,0.78) !important;
+  background: rgba(18,18,18,0.50) !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 760px) {
+
+  body::before {
+    height: 95px;
+  }
+
+  body::after {
+    height: 145px;
+  }
+
+  #titleBar,
+  body.multiple-scenes #titleBar,
+  body.fullscreen-enabled #titleBar {
+    top: 16px !important;
+  }
+
+  #titleBar .sceneName {
+    max-width: 150px !important;
+
+    padding: 9px 16px !important;
+
+    font-size: 13px !important;
+
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
